@@ -1,5 +1,12 @@
 package me.itnotes;
 
+
+/**
+* Bean Message
+* 
+* @author  Rafa Soriazu
+*
+*/
 public class Message {
 
   private String message;
