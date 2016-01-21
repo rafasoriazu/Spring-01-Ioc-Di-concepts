@@ -19,7 +19,7 @@ public class Message {
 		this.message = message;
 	}
 	
-	public void printMessage(){
-		System.out.print("Message: "+ message);
-	}
+	public void processMessage(){
+     message=" Este es el mensaje que tengo: " +message;
+   }
 }

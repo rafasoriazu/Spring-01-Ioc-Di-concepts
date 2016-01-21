@@ -8,7 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 * Este programa:
 * Carga el contexto(ApplicationContext) definido en el XML application-context.xml
 * Obtiene el bean messageBean, declarado en el xml.
-* Llama a Message.printMessage, que imprime en consola el mensaje que tiene el bean.
+* Llama a Message.processMessage, que hace algo en el mensaje.
+* Obtiene el mensaje y lo imprime por consola.
 *
 * Es un ejempo muy sencillo que muestra cómo es lo definido en el xml quien controla la creación y manejo de dependencias entre objetos.
 *
@@ -16,6 +17,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 * El bucle for lista los beans declarados en el application-context.xml
 * En este caso sólo hay uno, pero lo habitual es uqe haya varios.
 * Todo lo que se hace declarando en un XML, se puede hacer por código o con anotaciones. El control es total.
+* Al final es recomendable cerrar el applicationContext
+*
 * @author  Rafa Soriazu
 * @version 1.0
 */
@@ -30,8 +33,9 @@ public class Runner {
 	    	 System.out.println("- "+aux);
 	   }
       Message message = (Message) applicationContext.getBean("messageBean");
-         message.printMessage();
-         ((ConfigurableApplicationContext)applicationContext).close();
+      message.processMessage();
+     	System.out.println(message.getMessage());
+      ((ConfigurableApplicationContext)applicationContext).close();
          
 	}
 
