@@ -26,15 +26,19 @@ public class Runner {
 
 	public static void main(String[] args) {
 		System.out.println("Inicio");
+     //Creamos el applicationContext con lo definido en application-context.xml
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");   
 	   System.out.println("Contexto inicializado");
 	   System.out.println("Lista de beans:");
 	   for (String aux:applicationContext.getBeanDefinitionNames()){
 	    	 System.out.println("- "+aux);
 	   }
+     //Obtenemo el bean que se nos ha creado
       Message message = (Message) applicationContext.getBean("messageBean");
+     //LLamada a un metodo tonoto del bean
       message.processMessage();
      	System.out.println(message.getMessage());
+     //Cerrar el applicationContext
       ((ConfigurableApplicationContext)applicationContext).close();
          
 	}
